@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "GAPS Beautifuler",
-  "version": "7.5.0",
+  "version": "7.5.1",
   "description": "Refonte complète de GAPS HEIG-VD : design system « Précision », clair et sombre, sur toutes les pages.",
   "icons": {
     "16": "icons/icon-16.png",

@@ -19,9 +19,9 @@ GAPS Beautifuler est une extension de navigateur **non officielle**, sans lien a
 
 Aucune. L'extension n'a ni serveur, ni outil de statistiques, ni traceur, ni publicité. Le développeur n'a accès à aucune information sur vous ou sur votre utilisation.
 
-## Ressource externe
+## Connexions réseau
 
-Le style affiche le logo de la HEIG-VD, chargé depuis Wikimedia Commons (`upload.wikimedia.org`). Pour afficher cette image, votre navigateur contacte les serveurs de Wikimedia, qui reçoivent les informations techniques habituelles d'une requête web (adresse IP, type de navigateur). L'extension n'envoie rien d'autre. Voir la [politique de confidentialité de Wikimedia](https://foundation.wikimedia.org/wiki/Policy:Privacy_policy).
+Aucune. Toutes les ressources (icônes, logo) sont intégrées à l'extension : elle ne contacte aucun serveur, ni le sien ni celui d'un tiers.
 
 ## Modifications
 
@@ -47,7 +47,7 @@ GAPS Beautifuler is an **unofficial** browser extension, not affiliated with HEI
 - It does not read page content; it only changes how pages look.
 - There is no server, analytics, tracking or advertising. The developer has no access to any information about you or your usage.
 
-**External resource.** The stylesheet displays the HEIG-VD logo, loaded from Wikimedia Commons (`upload.wikimedia.org`). To display it, your browser contacts Wikimedia's servers, which receive the standard technical information of any web request (IP address, browser type). Nothing else is sent. See the [Wikimedia privacy policy](https://foundation.wikimedia.org/wiki/Policy:Privacy_policy).
+**Network requests.** None. All resources (icons, logo) are bundled in the extension; it never contacts any server, its own or a third party's.
 
 **Changes.** Any change to this policy will be published on this page with a new date.
 

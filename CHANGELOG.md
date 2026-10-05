@@ -1,5 +1,11 @@
 # GAPS HEIG-VD · Précision — CHANGELOG
 
+## 7.5.1 — logo intégré
+
+- Le logo HEIG-VD de la barre du haut est maintenant intégré au CSS (PNG en data URI, 7 Ko), au lieu d'être chargé depuis Wikimedia Commons. Le style ne fait plus aucune requête vers un autre site.
+- Aucun changement visuel.
+- Extensions Firefox et Chrome reconstruites en 7.5.1.
+
 ## 7.5.0 — annonces de l'accueil
 
 - **Annonces** (`#news_root`, en haut de la page d'accueil) :
