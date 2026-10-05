@@ -29,6 +29,7 @@ L'extension reste installée après redémarrage. Chrome peut afficher de temps 
    - Aucune donnée collectée : coche les attestations.
    - Aucune permission à justifier.
    - Pas de code distant, puisqu'il n'y a pas de script.
+   - URL des règles de confidentialité : <https://github.com/williamdonze/gaps-beautifuler/blob/main/PRIVACY.md> (voir `../PRIVACY.md`).
 5. **Envoyer pour examen.** Une extension uniquement CSS est en général acceptée en quelques jours.
 
 Choisis la visibilité :
