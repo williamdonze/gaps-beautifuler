@@ -1,0 +1,11 @@
+# Aperçus et captures (peuvent contenir des données personnelles)
+apercus/
+*.html
+*.htm
+
+# Archives générées par build.py
+*.xpi
+*.zip
+
+__pycache__/
+.DS_Store
