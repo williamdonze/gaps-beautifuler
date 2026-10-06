@@ -1,5 +1,13 @@
 # GAPS HEIG-VD · Précision — CHANGELOG
 
+## 7.7.0 — adresse mse.hes-so.ch
+
+- Le style s'applique aussi à **mse.hes-so.ch**, qui sert le même GAPS à une autre adresse. Avant, l'extension ne faisait rien sur cette adresse.
+- Les adresses couvertes n'existent plus qu'à un seul endroit : les `domain("…")` de l'enveloppe `@-moz-document` du UserCSS. `build.py` en tire les `matches` des manifestes Firefox et Chrome.
+- Politique de confidentialité et README mis à jour.
+- Aucun changement de style.
+- Extensions Firefox et Chrome reconstruites en 7.7.0. À la mise à jour, Chrome et Firefox demandent d'autoriser le nouveau site.
+
 ## 7.6.1 — menus dans la fenêtre
 
 - **Menus de la barre** : les sous-menus et sous-sous-menus ne sortent plus de la page.

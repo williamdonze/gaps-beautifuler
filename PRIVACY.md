@@ -1,8 +1,8 @@
 # Politique de confidentialité · GAPS Beautifuler
 
-*Dernière mise à jour : 5 octobre 2026*
+*Dernière mise à jour : 6 octobre 2026*
 
-GAPS Beautifuler est une extension de navigateur **non officielle**, sans lien avec la HEIG-VD. Elle change l'apparence de [gaps.heig-vd.ch](https://gaps.heig-vd.ch) avec une feuille de style CSS.
+GAPS Beautifuler est une extension de navigateur **non officielle**, sans lien avec la HEIG-VD. Elle change l'apparence de GAPS ([gaps.heig-vd.ch](https://gaps.heig-vd.ch), aussi servi à l'adresse [mse.hes-so.ch](https://mse.hes-so.ch)) avec une feuille de style CSS.
 
 ## En bref
 
@@ -12,7 +12,7 @@ GAPS Beautifuler est une extension de navigateur **non officielle**, sans lien a
 
 - Elle contient **uniquement du CSS** : aucun script JavaScript, aucun code distant.
 - Elle ne demande **aucune permission** : ni accès aux onglets, ni à l'historique, ni au stockage, ni aux cookies.
-- Elle ne s'applique qu'aux pages de `gaps.heig-vd.ch`. Les autres sites ne sont pas touchés.
+- Elle ne s'applique qu'aux pages de `gaps.heig-vd.ch` et `mse.hes-so.ch`. Les autres sites ne sont pas touchés.
 - Elle ne lit pas le contenu des pages : elle change seulement leur affichage. Vos notes, horaires et données personnelles restent entre votre navigateur et GAPS, exactement comme sans l'extension.
 
 ## Données collectées
@@ -35,15 +35,15 @@ Pour toute question, ouvrez une issue sur le dépôt GitHub : <https://github.co
 
 # Privacy Policy · GAPS Beautifuler
 
-*Last updated: October 5, 2026*
+*Last updated: October 6, 2026*
 
-GAPS Beautifuler is an **unofficial** browser extension, not affiliated with HEIG-VD. It restyles [gaps.heig-vd.ch](https://gaps.heig-vd.ch) with a CSS stylesheet.
+GAPS Beautifuler is an **unofficial** browser extension, not affiliated with HEIG-VD. It restyles GAPS ([gaps.heig-vd.ch](https://gaps.heig-vd.ch), also served at [mse.hes-so.ch](https://mse.hes-so.ch)) with a CSS stylesheet.
 
 **The extension does not collect, store, transmit or sell any data.**
 
 - It contains **CSS only**: no JavaScript, no remote code.
 - It requests **no permissions** (no tabs, history, storage or cookies access).
-- It only applies to pages on `gaps.heig-vd.ch`.
+- It only applies to pages on `gaps.heig-vd.ch` and `mse.hes-so.ch`.
 - It does not read page content; it only changes how pages look.
 - There is no server, analytics, tracking or advertising. The developer has no access to any information about you or your usage.
 

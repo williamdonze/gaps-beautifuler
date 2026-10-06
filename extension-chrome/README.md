@@ -2,7 +2,7 @@
 
 Même style et même logo que l'extension Firefox. Fonctionne aussi dans Edge, Brave, Opera, Vivaldi et Arc, qui acceptent les extensions Chrome.
 
-L'extension ne contient que du CSS : aucun script, aucune permission, aucune donnée collectée. Elle n'agit que sur `gaps.heig-vd.ch`.
+L'extension ne contient que du CSS : aucun script, aucune permission, aucune donnée collectée. Elle n'agit que sur `gaps.heig-vd.ch` et `mse.hes-so.ch` (le même GAPS, à une autre adresse).
 
 > Désactive le style dans Stylus si tu installes l'extension. Sinon, le CSS est appliqué deux fois.
 
@@ -25,7 +25,7 @@ L'extension reste installée après redémarrage. Chrome peut afficher de temps 
    - au moins une capture d'écran en 1280 × 800 ou 640 × 400 ;
    - une description qui précise **non officielle, sans lien avec la HEIG-VD**.
 4. Onglet **Pratiques de confidentialité** :
-   - « Objectif unique » : *Restyler l'interface de gaps.heig-vd.ch avec du CSS.*
+   - « Objectif unique » : *Restyler l'interface de GAPS (gaps.heig-vd.ch et mse.hes-so.ch) avec du CSS.*
    - Aucune donnée collectée : coche les attestations.
    - Aucune permission à justifier.
    - Pas de code distant, puisqu'il n'y a pas de script.

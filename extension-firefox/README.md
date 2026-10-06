@@ -1,6 +1,6 @@
 # GAPS Beautifuler · extension Firefox
 
-Le même style que `gaps-heig-moderne.css`, mais sans Stylus. L'extension ne contient que du CSS : aucun script, aucune donnée collectée, et elle n'agit que sur `gaps.heig-vd.ch`.
+Le même style que `gaps-heig-moderne.css`, mais sans Stylus. L'extension ne contient que du CSS : aucun script, aucune donnée collectée, et elle n'agit que sur `gaps.heig-vd.ch` et `mse.hes-so.ch` (le même GAPS, à une autre adresse).
 
 Fichier à installer : `gaps-beautifuler.xpi`.
 

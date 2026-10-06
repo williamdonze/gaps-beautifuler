@@ -5,7 +5,8 @@
 
 - src/gaps.css      : le CSS de ../gaps-heig-moderne.css, sans l'enveloppe
                       @-moz-document (Firefox ne l'accepte plus hors Stylus).
-- src/manifest.json : la version reprend le @version du UserCSS.
+- src/manifest.json : la version reprend le @version du UserCSS, et les
+                      adresses couvertes ses domain("…") de @-moz-document.
 - src/icons/        : icônes tirées de logo.png s'il existe, sinon générées.
 - gaps-beautifuler.xpi : l'archive à installer.
 """
@@ -22,8 +23,27 @@ XPI = ICI / "gaps-beautifuler.xpi"
 LOGO = next((ICI / f"logo.{e}" for e in ("png", "jpg", "jpeg", "webp") if (ICI / f"logo.{e}").exists()), ICI / "logo.png")
 
 
+ENVELOPPE = r'@-moz-document\s+([^{]+)\{'
+
+
+def domaines(texte):
+    """Les domaines de l'enveloppe @-moz-document, dans l'ordre."""
+    m = re.search(ENVELOPPE, texte)
+    if not m:
+        raise SystemExit("Enveloppe @-moz-document introuvable dans le UserCSS")
+    liste = re.findall(r'domain\("([^"]+)"\)', m.group(1))
+    if not liste:
+        raise SystemExit("Aucun domain(\"…\") dans l'enveloppe @-moz-document")
+    return liste
+
+
+def adresses(texte):
+    """Motifs d'adresses du manifeste : chaque domaine en https et en http."""
+    return [f"{schema}://{d}/*" for d in domaines(texte) for schema in ("https", "http")]
+
+
 def css_sans_enveloppe(texte):
-    m = re.search(r'@-moz-document\s+domain\("gaps\.heig-vd\.ch"\)\s*\{', texte)
+    m = re.search(ENVELOPPE, texte)
     if not m:
         raise SystemExit("Enveloppe @-moz-document introuvable dans le UserCSS")
     fin = texte.rstrip().rfind("}")
@@ -63,6 +83,7 @@ def main():
 
     manifeste = json.loads((SRC / "manifest.json").read_text(encoding="utf-8"))
     manifeste["version"] = version
+    manifeste["content_scripts"][0]["matches"] = adresses(texte)
     (SRC / "manifest.json").write_text(json.dumps(manifeste, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     icones()

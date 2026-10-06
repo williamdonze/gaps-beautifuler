@@ -1,12 +1,12 @@
 /* ==UserStyle==
 @name         GAPS HEIG-VD · Précision
 @namespace    gaps.heig-vd.ch
-@version      7.6.1
+@version      7.7.0
 @description  Refonte complète de GAPS HEIG-VD : design system « Précision », clair & sombre — toutes les pages
 @author       Moi
 ==/UserStyle== */
 
-@-moz-document domain("gaps.heig-vd.ch") {
+@-moz-document domain("gaps.heig-vd.ch"), domain("mse.hes-so.ch") {
 
 /* ╔══════════════════════════════════════════════════════════════╗
    ║  1. DESIGN TOKENS                                            ║

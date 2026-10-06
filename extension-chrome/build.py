@@ -32,6 +32,7 @@ def main():
 
     manifeste = json.loads((SRC / "manifest.json").read_text(encoding="utf-8"))
     manifeste["version"] = version
+    manifeste["content_scripts"][0]["matches"] = ff.adresses(texte)
     (SRC / "manifest.json").write_text(json.dumps(manifeste, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     ff.SRC = SRC  # mêmes icônes que Firefox, écrites dans src/icons/
