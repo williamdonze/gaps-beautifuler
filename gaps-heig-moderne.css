@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         GAPS HEIG-VD · Précision
 @namespace    gaps.heig-vd.ch
-@version      7.6.0
+@version      7.6.1
 @description  Refonte complète de GAPS HEIG-VD : design system « Précision », clair & sombre — toutes les pages
 @author       Moi
 ==/UserStyle== */
@@ -391,6 +391,52 @@ table.titre { transition: opacity var(--t-base) var(--ease); }
 }
 /* l'élément reste « actif » tant que son sous-menu est ouvert */
 #menu_root ul ul li:has(> ul):hover { background: var(--surface-hover) !important; }
+
+/* Placement des panneaux : ils restent dans la fenêtre.
+   GAPS ouvre chaque sous-menu sous son entrée et chaque sous-sous-menu à
+   droite du panneau (position posée en ligne par son JS) ; à droite de la
+   barre, ils sortaient de la page. Ici :
+   · panneau de 1er niveau aligné à gauche de l'entrée pour les premiers
+     menus, à droite pour les suivants (Utilitaires, Élections, Masters) ;
+   · sous-sous-menu ouvert vers la droite sous Horaires et Étudiant·e,
+     vers la gauche ailleurs ; libellés longs repliés sur plusieurs lignes. */
+#menu_root > ul > li.liroot:not(:has(> a[title="Page d'accueil"])) { position: relative; }
+#menu_root > ul > li.liroot > ul {
+  top: 100% !important;
+  left: 0 !important;
+  right: auto !important;
+}
+#menu_root > ul > li.liroot:nth-last-child(-n+4) > ul {
+  left: auto !important;
+  right: 0 !important;
+}
+#menu_root ul ul li { position: relative; }
+#menu_root ul ul ul {
+  top: -7px !important;   /* 6px de marge intérieure + 1px de bordure : 1re ligne alignée */
+  left: auto !important;
+  right: calc(100% + 12px) !important;
+  margin: 0 !important;
+  min-width: 240px;
+  max-width: min(360px, calc(100vw - 32px));
+}
+#menu_root > ul > li.liroot:nth-child(-n+3) ul ul {
+  left: calc(100% + 12px) !important;
+  right: auto !important;
+}
+#menu_root ul ul ul li { white-space: normal; line-height: 1.4 !important; padding-block: 9px !important; }
+/* pont invisible entre le panneau et son sous-sous-menu */
+#menu_root ul ul ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  width: 14px;
+}
+#menu_root > ul > li.liroot:nth-child(-n+3) ul ul::before { left: auto; right: 100%; }
+/* le chevron indique le côté d'ouverture */
+#menu_root > ul > li.liroot:nth-child(n+4) > ul > li:has(> ul)::after { scale: -1 1; }
+#menu_root > ul > li.liroot:nth-child(n+4) > ul > li:has(> ul):hover::after { translate: -2px 0; }
 
 /* ╔══════════════════════════════════════════════════════════════╗
    ║  4. PAGE D'ACCUEIL : tableau de bord « bento »               ║
@@ -1894,6 +1940,33 @@ svg.tooltip-icon { fill: var(--text-muted) !important; width: 16px !important; h
   #menu_root > ul > li > ul { top: 100%; }
   #menu_root > ul > li:nth-last-child(-n+4) > ul { left: auto !important; right: 0 !important; }
   #menu_root ul li > ul { min-width: min(280px, calc(100vw - 32px)); }
+  /* sous-sous-menu : déplié dans le panneau, en retrait, plutôt qu'à côté */
+  #menu_root ul ul ul,
+  #menu_root > ul > li.liroot:nth-child(-n+3) ul ul {
+    position: static !important;
+    min-width: 0;
+    max-width: none;
+    margin: 2px 0 var(--s-1) var(--s-4) !important;
+    padding: 0 0 0 var(--s-2) !important;
+    border: 0 !important;
+    border-left: 2px solid var(--border) !important;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  #menu_root ul ul ul::before { display: none; }
+  /* chevron fixé en haut à droite de l'entrée, tourné vers le bas une fois ouvert */
+  #menu_root ul ul li:has(> ul)::after,
+  #menu_root > ul > li.liroot:nth-child(n+4) > ul > li:has(> ul)::after {
+    position: absolute;
+    top: 0;
+    right: var(--s-2);
+    float: none;
+    margin: 0;
+    scale: 1;
+  }
+  #menu_root ul ul li:has(> ul):hover::after,
+  #menu_root > ul > li.liroot:nth-child(n+4) > ul > li:has(> ul):hover::after { translate: 0; rotate: 90deg; }
+  #menu_root ul ul li:has(> ul):hover { background: transparent !important; }
 }
 
 @media (max-width: 639px) {

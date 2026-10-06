@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "GAPS Beautifuler",
-  "version": "7.6.0",
+  "version": "7.6.1",
   "description": "Refonte moderne et non officielle de GAPS (HEIG-VD) : thème clair et sombre, toutes les pages. CSS uniquement.",
   "icons": {
     "16": "icons/icon-16.png",

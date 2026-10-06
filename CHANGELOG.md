@@ -1,5 +1,15 @@
 # GAPS HEIG-VD · Précision — CHANGELOG
 
+## 7.6.1 — menus dans la fenêtre
+
+- **Menus de la barre** : les sous-menus et sous-sous-menus ne sortent plus de la page.
+  - Les panneaux d'Utilitaires, Élections et Masters s'alignent sur le bord droit de leur entrée au lieu du bord gauche.
+  - Les sous-sous-menus s'ouvrent vers la gauche, sauf sous Horaires et Étudiant·e où il reste de la place à droite. Le chevron indique le côté d'ouverture.
+  - Les libellés longs (candidats aux élections…) passent sur plusieurs lignes au lieu d'élargir le panneau.
+  - Un pont invisible relie le panneau à son sous-sous-menu : la souris peut traverser l'espace qui les sépare.
+  - Mobile : le sous-sous-menu se déplie dans le panneau, en retrait, avec un chevron tourné vers le bas.
+- Extensions Firefox et Chrome reconstruites en 7.6.1.
+
 ## 7.6.0 — grille semestrielle, annonces compactes
 
 - **Nouvelle page couverte : la grille semestrielle** (`/consultation/horaires/grillesemestrielle.php`, ciblée par `#control` et `#pages`) :
