@@ -1,5 +1,11 @@
 # GAPS HEIG-VD · Précision — CHANGELOG
 
+## 7.5.2 — republication
+
+- Numéro de version augmenté pour pouvoir renvoyer l'extension au Chrome Web Store, qui refuse un paquet de même version que celui déjà publié (7.5.1).
+- Aucun changement de style par rapport à 7.5.1.
+- Extensions Firefox et Chrome reconstruites en 7.5.2.
+
 ## 7.5.1 — logo intégré
 
 - Le logo HEIG-VD de la barre du haut est maintenant intégré au CSS (PNG en data URI, 7 Ko), au lieu d'être chargé depuis Wikimedia Commons. Le style ne fait plus aucune requête vers un autre site.
