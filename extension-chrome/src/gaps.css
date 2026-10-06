@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         GAPS HEIG-VD · Précision
 @namespace    gaps.heig-vd.ch
-@version      7.5.2
+@version      7.6.0
 @description  Refonte complète de GAPS HEIG-VD : design system « Précision », clair & sombre — toutes les pages
 @author       Moi
 ==/UserStyle== */
@@ -396,20 +396,22 @@ table.titre { transition: opacity var(--t-base) var(--ease); }
    ║  4. PAGE D'ACCUEIL : tableau de bord « bento »               ║
    ╚══════════════════════════════════════════════════════════════╝ */
 /* — Annonces (#news_root) —
-     Une carte à la largeur du tableau de bord : surtitre « Annonces » avec
-     pictogramme, puis chaque annonce en titre, date, auteur·e et texte.
+     Un bandeau compact, à la largeur du tableau de bord (et de la carte de
+     connexion) : surtitre « Annonces » dans une colonne étroite à gauche,
+     puis chaque annonce sur une ligne (titre, date, auteur·e) et son texte
+     limité à deux lignes, déplié au survol, au toucher ou au focus.
      Les fonds #eef et la bordure noire posés en ligne disparaissent ;
      la hauteur fixe posée par le JS (#news) est libérée. */
 #news_root:not([style*="display:none"]):not([style*="display: none"]) {
   --i-megaphone: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11v3a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z'/%3E%3Cpath d='M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13'/%3E%3C/svg%3E");
   display: block;
   width: 100% !important;
-  margin-top: var(--s-8);
-  padding: var(--s-5) var(--s-6);
+  margin-top: var(--s-6);
+  padding: var(--s-3) var(--s-5);
   box-sizing: border-box;
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
-  border-radius: var(--r-xl) !important;
+  border-radius: var(--r-lg) !important;
   box-shadow: var(--shadow-xs) !important;
 }
 #news_root > tbody,
@@ -430,36 +432,44 @@ table.titre { transition: opacity var(--t-base) var(--ease); }
   border: 0 !important;
   background: transparent !important;
 }
+/* surtitre à gauche, annonces à droite */
+#news_root > tbody {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: var(--s-6);
+  align-items: start;
+}
+#news_root > tbody > tr { display: contents; }
 #news_root td.titreBox {
   display: flex !important;
   align-items: center;
   gap: var(--s-2);
-  margin-bottom: var(--s-2);
+  padding: var(--s-2) 0 !important;
   color: var(--accent-text) !important;
-  font-size: var(--fs-sm) !important;
+  font-size: var(--fs-xs) !important;
   font-weight: 600 !important;
   letter-spacing: .01em;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 #news_root td.titreBox::before {
   content: "";
   flex: none;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   background: currentColor;
   -webkit-mask: var(--i-megaphone) center / contain no-repeat;
   mask: var(--i-megaphone) center / contain no-repeat;
 }
 
 /* une annonce */
-#news_root #tab_news div[id^="news"] { padding: var(--s-3) 0; }
+#news_root #tab_news div[id^="news"] { padding: var(--s-2) 0; cursor: pointer; }
 #news_root #tab_news div[id^="news"] + div[id^="news"] { border-top: 1px solid var(--border); }
 #news_root #tab_news tr {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   column-gap: var(--s-4);
-  row-gap: var(--s-1);
+  row-gap: 2px;
   padding: 0 !important;
   background: transparent !important;
 }
@@ -470,25 +480,25 @@ table.titre { transition: opacity var(--t-base) var(--ease); }
   background: transparent !important;
   text-align: left !important;
 }
-/* titre + date */
+/* titre + date sur une ligne */
 #news_root #tab_news td[id^="titre"] {
   flex: 1 1 320px;
   min-width: 0;
   color: var(--text) !important;
-  font-size: var(--fs-md) !important;
+  font-size: var(--fs-sm) !important;
   font-weight: 600 !important;
-  line-height: 1.35;
+  line-height: 1.5;
 }
 #news_root #tab_news td[id^="titre"] > nobr { white-space: normal; }
 #news_root #tab_news td[id^="titre"] font {
-  display: block;
-  margin-top: var(--s-1);
+  margin-left: var(--s-2);
   color: var(--text-muted) !important;
   font-size: var(--fs-xs) !important;
   font-style: normal !important;
   font-weight: 400 !important;
   font-variant-numeric: tabular-nums;
 }
+#news_root #tab_news td[id^="titre"] font i { font-style: normal; }
 /* auteur·e */
 #news_root #tab_news td[id^="titre"] + td {
   display: inline-flex;
@@ -498,22 +508,36 @@ table.titre { transition: opacity var(--t-base) var(--ease); }
   font-size: var(--fs-xs) !important;
   white-space: nowrap;
 }
+#news_root #tab_news td[id^="titre"] + td font { font-size: inherit !important; color: inherit !important; }
 #news_root #tab_news td[id^="titre"] + td::before {
   content: "";
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   background: currentColor;
   -webkit-mask: var(--i-user) center / contain no-repeat;
   mask: var(--i-user) center / contain no-repeat;
 }
-/* texte */
+/* texte : deux lignes nettes, la troisième s'efface (signe qu'il y a une
+   suite) ; tout le texte au survol, au toucher ou au focus d'un lien.
+   Une hauteur plafonnée plutôt que line-clamp : les paragraphes de GAPS
+   sont séparés par des <br>, qu'on ne peut pas fusionner proprement. */
 #news_root #tab_news td[id^="corps"] {
-  margin-top: var(--s-3);
-  max-width: 72ch;
+  --news-lh: 1.55em;
+  max-height: calc(3 * var(--news-lh));
+  overflow: hidden !important;
+  max-width: 96ch;
   color: var(--text-2) !important;
   font-size: var(--fs-sm) !important;
-  line-height: 1.65;
+  line-height: var(--news-lh);
   overflow-wrap: anywhere;
+  -webkit-mask-image: linear-gradient(#000 calc(2 * var(--news-lh)), transparent calc(3 * var(--news-lh)));
+  mask-image: linear-gradient(#000 calc(2 * var(--news-lh)), transparent calc(3 * var(--news-lh)));
+  transition: max-height var(--t-base) var(--ease) .1s;
+}
+#news_root #tab_news div[id^="news"]:is(:hover, :active, :focus-within) td[id^="corps"] {
+  max-height: 40em;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 #news_root #tab_news td[id^="corps"] a {
   color: var(--accent-text) !important;
@@ -522,9 +546,20 @@ table.titre { transition: opacity var(--t-base) var(--ease); }
   text-underline-offset: 3px;
 }
 #news_root #tab_news td[id^="corps"] a:is(:hover, :focus-visible) { text-decoration-color: currentColor; }
+/* étroit : le surtitre repasse au-dessus */
 @media (max-width: 639px) {
-  #news_root:not([style*="display:none"]):not([style*="display: none"]) { padding: var(--s-4) var(--s-5); }
+  #news_root:not([style*="display:none"]):not([style*="display: none"]) { padding: var(--s-2) var(--s-4); }
+  #news_root > tbody { display: block; }
+  #news_root td.titreBox { padding-bottom: 0 !important; }
+  #news_root #tab_news td[id^="titre"] { flex: 0 1 auto; }
 }
+/* page de connexion : à la largeur de la carte, au-dessus d'elle */
+body:has(#wayf_div) #news_root:not([style*="display:none"]):not([style*="display: none"]) {
+  max-width: 440px;
+  margin: 0 auto var(--s-4) !important;
+}
+body:has(#wayf_div) #news_root > tbody { display: block; }
+body:has(#wayf_div) #news_root td.titreBox { padding-bottom: 0 !important; }
 
 table.box:has(table[style*="border-collapse"]) {
   width: 100% !important;
@@ -1889,6 +1924,7 @@ svg.tooltip-icon { fill: var(--text-muted) !important; width: 16px !important; h
    · Fiches d'unité / de module ..... .sheet-box
    · Contrôles continus ............. .gaps-helper-page
    · Bulletin de notes .............. #record_table
+   · Grille semestrielle ............ #control / #pages
    · Connexion ...................... #wayf_div
    Chaque section est limitée à sa page : aucune règle de page ne touche
    l'accueil (grille de cartes) ni l'horaire (#scheduleDiv). */
@@ -5484,6 +5520,182 @@ div.corps:has(#record_table) {
   #record_table tr.bulletin_header_row > td:nth-child(6),
   #record_table tr.bulletin_module_row:not(.total-credits-row) > td:nth-child(7) { padding-right: var(--s-4) !important; }
   #record_table tr.total-credits-row { padding: var(--s-4) var(--s-5); }
+}
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  PAGE GRILLE SEMESTRIELLE — #control / #pages                ║
+   ║  /consultation/horaires/grillesemestrielle.php               ║
+   ║  Titre, réglages en carte (cases en grille), puis l'aperçu : ║
+   ║  chaque feuille A3 posée comme une page de papier, réduite   ║
+   ║  pour tenir dans la largeur. Le contenu des feuilles garde   ║
+   ║  la mise en forme de GAPS : c'est ce qui part dans le PDF.   ║
+   ║  #rendering (copie hors écran servant à l'export) n'est      ║
+   ║  jamais stylé, seulement protégé des règles globales.        ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+/* titre de page, porté par le fieldset (la page n'en a pas) */
+fieldset#control {
+  text-align: left;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  min-width: 0;
+}
+fieldset#control::before {
+  content: "Horaires\AGrille semestrielle";
+  display: block;
+  margin: clamp(32px, 5vw, 56px) 0 var(--s-6);
+  color: var(--text);
+  font-size: var(--fs-2xl);
+  font-weight: 650;
+  letter-spacing: -.035em;
+  line-height: 1.1;
+  white-space: pre-line;
+}
+/* première ligne = surtitre rouge, comme les autres pages */
+fieldset#control::first-line {
+  color: var(--accent-text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: .01em;
+  line-height: 2.2;
+}
+
+/* réglages : une carte, les cases en grille */
+fieldset#control > table.box {
+  display: block;
+  width: 100% !important;
+  padding: var(--s-5) var(--s-6);
+  box-sizing: border-box;
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-xs);
+}
+fieldset#control > table.box > tbody {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  column-gap: var(--s-6);
+  row-gap: var(--s-1);
+}
+fieldset#control > table.box > tbody > tr { display: contents; }
+fieldset#control > table.box th.titreBox {
+  grid-column: 1 / -1;
+  display: block;
+  margin-bottom: var(--s-3);
+  padding: 0 !important;
+  background: transparent !important;
+  color: var(--text) !important;
+  font-size: var(--fs-md) !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+}
+fieldset#control > table.box td {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 32px;
+  padding: 0 !important;
+  color: var(--text-2) !important;
+  font-size: var(--fs-sm) !important;
+}
+fieldset#control > table.box td > input[type="checkbox"] {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+}
+fieldset#control > table.box td > label { cursor: pointer; }
+/* « Acronymes uniquement » dépend de « Afficher les enseignant·e·s » */
+fieldset#control > table.box td:has(#teachers-abbr-chk) { color: var(--text-muted) !important; }
+fieldset#control > table.box td:has(#generate-btn) {
+  grid-column: 1 / -1;
+  margin-top: var(--s-4);
+  padding-top: var(--s-4) !important;
+  border-top: 1px solid var(--border);
+}
+#generate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 40px;
+  font-weight: 600 !important;
+}
+#generate-btn::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: var(--i-download) center / contain no-repeat;
+  mask: var(--i-download) center / contain no-repeat;
+}
+
+/* « Aperçu » : intertitre de section */
+table#overview {
+  width: 100% !important;
+  margin: var(--s-10) 0 var(--s-4) !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+table#overview th.titreBox {
+  padding: 0 !important;
+  background: transparent !important;
+  color: var(--text) !important;
+  font-size: var(--fs-lg) !important;
+  font-weight: 650 !important;
+  letter-spacing: -.02em;
+  text-align: left !important;
+}
+table#overview th.titreBox::after {
+  content: "Format A3 paysage, tel qu'il sera exporté en PDF.";
+  display: block;
+  margin-top: var(--s-1);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+#messages:empty { display: none; }
+
+/* les feuilles : du papier, réduit pour tenir dans la colonne
+   (feuille GAPS : 42 cm + 2 × 8 mm ≈ 1648 px) */
+#pages {
+  left: 0 !important;
+  overflow-x: auto;
+  padding: var(--s-1) var(--s-1) var(--s-4);
+  scrollbar-width: thin;
+}
+#pages > .page {
+  zoom: .68;
+  margin: 0 auto var(--s-8) !important;
+  outline: 0 !important;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px var(--border), var(--shadow-md);
+}
+#pages > .page:last-child { margin-bottom: 0 !important; }
+/* réduits, les filets de 1 px s'arrondissent au pixel d'écran et la grille
+   grandit de quelques pixels : on la laisse déborder dans la marge du bas
+   plutôt que de couper la dernière ligne */
+#pages .table-wrapper { overflow: visible !important; }
+@media (max-width: 1167px) { #pages > .page { zoom: .51; } }
+@media (max-width: 899px)  { #pages > .page { zoom: .55; } } /* défile en largeur */
+
+/* le contenu des feuilles (aperçu et copie d'export) garde la police, la
+   couleur et l'interlignage de GAPS, que les règles globales remplacent
+   sinon (en sombre, le texte deviendrait clair sur le papier blanc) */
+:is(#pages, #rendering) .page {
+  color: #000 !important;
+  line-height: normal;
+  color-scheme: light;
+}
+:is(#pages, #rendering) :is(table, td, th) {
+  font-family: "Open sans", sans-serif !important;
+}
+:is(#pages, #rendering) th { text-align: center !important; }
+
+@media (max-width: 639px) {
+  fieldset#control > table.box { padding: var(--s-4) var(--s-5); }
+  fieldset#control > table.box > tbody { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ╔══════════════════════════════════════════════════════════════╗

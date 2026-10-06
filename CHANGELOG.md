@@ -1,5 +1,20 @@
 # GAPS HEIG-VD · Précision — CHANGELOG
 
+## 7.6.0 — grille semestrielle, annonces compactes
+
+- **Nouvelle page couverte : la grille semestrielle** (`/consultation/horaires/grillesemestrielle.php`, ciblée par `#control` et `#pages`) :
+  - Titre « Grille semestrielle » avec le surtitre rouge « Horaires », comme les autres pages.
+  - Les réglages « Mise en forme » deviennent une carte : cases à cocher en grille (trois colonnes sur ordinateur, une sur mobile), bouton « Générer le PDF » avec une icône de téléchargement.
+  - « Aperçu » devient un intertitre, avec la mention « Format A3 paysage, tel qu'il sera exporté en PDF ».
+  - Chaque feuille A3 est posée comme une page de papier (coins arrondis, ombre), réduite pour tenir dans la largeur. Elle n'est plus décalée de 390 px vers la gauche ni coupée. Sur mobile, elle défile en largeur.
+  - Le contenu des feuilles garde exactement la mise en forme de GAPS (police Open Sans condensée, texte noir, interlignage). Cela vaut aussi pour la copie qui sert à l'export : le PDF ne change pas, et le texte ne devient plus clair en mode sombre.
+- **Annonces** (accueil et page de connexion) : bloc beaucoup plus compact (372 → 183 px de haut sur ordinateur avec deux annonces) :
+  - Surtitre « Annonces » dans une colonne étroite à gauche.
+  - Titre et date sur une seule ligne, auteur·e à droite.
+  - Le texte est limité à deux lignes, la troisième s'efface. Tout le texte s'affiche au survol, au toucher ou au focus d'un lien.
+  - Sur la page de connexion, les annonces prennent la largeur de la carte et se placent au-dessus d'elle.
+- Extensions Firefox et Chrome reconstruites en 7.6.0.
+
 ## 7.5.2 — republication
 
 - Numéro de version augmenté pour pouvoir renvoyer l'extension au Chrome Web Store, qui refuse un paquet de même version que celui déjà publié (7.5.1).
